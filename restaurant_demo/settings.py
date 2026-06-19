@@ -11,7 +11,7 @@ SECRET_KEY = config('SECRET_KEY', default='django-insecure-CHANGE-THIS-KEY-ON-PR
 
 DEBUG = config('DEBUG', default=True, cast=bool)
 
-ALLOWED_HOSTS = ['https://restaurant-template-9ryu.onrender.com/']
+ALLOWED_HOSTS = ['restaurant-template-9ryu.onrender.com']
 
 CSRF_TRUSTED_ORIGINS = config(
     'CSRF_TRUSTED_ORIGINS',
