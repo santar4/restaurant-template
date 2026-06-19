@@ -16,11 +16,6 @@ def main():
             "forget to activate a virtual environment?"
         ) from exc
     execute_from_command_line(sys.argv)
-import os
-
-random_bytes = os.urandom(16)
-
-print(random_bytes)
 
 if __name__ == '__main__':
     main()
