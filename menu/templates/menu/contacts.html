@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+
+{% block title %}Контакти та бронювання — Trattoria Bella{% endblock %}
+
+{% block content %}
+
+<section class="section-padding" style="padding-top: 8rem;">
+    <div class="container">
+        <div class="text-center mb-5">
+            <p class="section-subtitle">Завжди раді вам</p>
+            <h1 class="section-title">Контакти та бронювання</h1>
+        </div>
+
+        <div class="row g-5">
+            <div class="col-lg-5">
+                <h5 class="mb-3">Як нас знайти</h5>
+                <p class="mb-1">📍 вул. Хрещатик, 12, Київ</p>
+                <p class="mb-1">📞 +380 67 123 45 67</p>
+                <p class="mb-1">✉️ info@trattoriabella.ua</p>
+                <p class="mb-4">🕒 Пн–Чт: 11:00–22:00 · Пт–Сб: 11:00–23:30 · Нд: 12:00–21:00</p>
+
+                <div class="rounded-4 overflow-hidden shadow-sm">
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2540.8!2d30.5234!3d50.4501!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNTDCsDI3JzAwLjQiTiAzMMKwMzEnMjQuMiJF!5e0!3m2!1suk!2sua"
+                        width="100%" height="280" style="border:0;" loading="lazy">
+                    </iframe>
+                </div>
+            </div>
+
+            <div class="col-lg-7">
+                <div class="booking-card">
+                    <h5 class="mb-4">Забронювати столик</h5>
+                    <form method="post">
+                        {% csrf_token %}
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <label class="form-label small fw-semibold">{{ form.name.label }}</label>
+                                {{ form.name }}
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label small fw-semibold">{{ form.phone.label }}</label>
+                                {{ form.phone }}
+                            </div>
+                            <div class="col-md-4">
+                                <label class="form-label small fw-semibold">{{ form.guests.label }}</label>
+                                {{ form.guests }}
+                            </div>
+                            <div class="col-md-4">
+                                <label class="form-label small fw-semibold">{{ form.date.label }}</label>
+                                {{ form.date }}
+                            </div>
+                            <div class="col-md-4">
+                                <label class="form-label small fw-semibold">{{ form.time.label }}</label>
+                                {{ form.time }}
+                            </div>
+                            <div class="col-12">
+                                <label class="form-label small fw-semibold">{{ form.comment.label }}</label>
+                                {{ form.comment }}
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-warning btn-lg w-100 mt-4">
+                            Забронювати столик
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}

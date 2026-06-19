@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block title %}Меню — Trattoria Bella{% endblock %}
+
+{% block content %}
+
+<section class="section-padding" style="padding-top: 8rem;">
+    <div class="container">
+        <div class="text-center mb-5">
+            <p class="section-subtitle">Наша кухня</p>
+            <h1 class="section-title">Меню</h1>
+        </div>
+
+        {% for category in categories %}
+            <h3 class="category-title">{{ category.name }}</h3>
+            <div class="row">
+                {% for dish in category.dishes.all %}
+                    {% if dish.is_available %}
+                    <div class="col-md-6">
+                        <div class="menu-item">
+                            <div>
+                                <h6 class="mb-1">{{ dish.name }}</h6>
+                                {% if dish.description %}
+                                    <p class="text-muted small mb-0">{{ dish.description }}</p>
+                                {% endif %}
+                            {% if dish.image %}
+                                    <img src="{{ dish.image.url }}" class="dish-image">
+                                {% endif %}
+                            </div>
+                            <span class="dish-price ms-3">{{ dish.price }} грн</span>
+                        </div>
+                    </div>
+                    {% endif %}
+                {% endfor %}
+            </div>
+        {% empty %}
+        {% endfor %}
+    </div>
+</section>
+
+{% endblock %}

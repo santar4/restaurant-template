@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<section class="hero-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-7">
+                <p class="text-warning fw-semibold mb-2">Італійська кухня з душею</p>
+                <h1 class="mb-4">Смак Італії в&nbsp;серці Києва</h1>
+                <p class="lead mb-4">
+                    Свіжі продукти, родинні рецепти та теплий прийом щодня з 11:00 до 23:00.
+                    Приходьте на вечерю, яку ви запам'ятаєте.
+                </p>
+                <div class="d-flex gap-3 flex-wrap">
+                    <a href="{% url 'menu_list' %}" class="btn btn-warning btn-lg px-4">Переглянути меню</a>
+                    <a href="{% url 'contacts' %}" class="btn btn-outline-light btn-lg px-4">Забронювати столик</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section-padding">
+    <div class="container text-center">
+        <p class="section-subtitle">Рекомендуємо</p>
+        <h2 class="section-title mb-5">Найпопулярніші страви</h2>
+
+        <div class="row g-4">
+            {% for dish in featured_dishes %}
+            <div class="col-md-4">
+                <div class="dish-card">
+                    {% if dish.image %}
+                        <img src="{{ dish.image.url }}" alt="{{ dish.name }}" class="dish-image">
+                    {% else %}
+                        <div class="placeholder-img">🍝</div>
+                    {% endif %}
+                    <div class="p-3 text-start">
+                        <h5>{{ dish.name }}</h5>
+                        <p class="text-muted small mb-2">{{ dish.description|truncatewords:12 }}</p>
+                        <span class="dish-price">{{ dish.price }} грн</span>
+                    </div>
+                </div>
+            </div>
+            {% empty %}
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<section class="section-padding bg-white">
+    <div class="container">
+        <div class="row g-4 text-center">
+            <div class="col-md-4">
+                <div class="feature-icon">🌿</div>
+                <h5>Свіжі продукти</h5>
+                <p class="text-muted small">Закуповуємо овочі та зелень щодня у місцевих постачальників</p>
+            </div>
+            <div class="col-md-4">
+                <div class="feature-icon">👨‍🍳</div>
+                <h5>Шеф з Італії</h5>
+                <p class="text-muted small">12 років досвіду в ресторанах Мілану та Рима</p>
+            </div>
+            <div class="col-md-4">
+                <div class="feature-icon">❤️</div>
+                <h5>Родинна атмосфера</h5>
+                <p class="text-muted small">Затишний інтер'єр для побачень, родини та друзів</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}
