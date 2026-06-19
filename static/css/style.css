@@ -212,12 +212,11 @@ h1, h2, h3, .footer-brand, .navbar-brand {
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
     flex-shrink: 0;
     margin-top: 8px;
+    transition: transform 0.3s ease;
 }
 
-
-.menu-item h6 {
-    margin-bottom: 0.4rem;
-    line-height: 1.3;
+.dish-image:hover {
+    transform: scale(1.03);
 }
 
 @media (max-width: 768px) {
@@ -230,8 +229,16 @@ h1, h2, h3, .footer-brand, .navbar-brand {
         max-width: 100%;
         height: 220px;
     }
+}
 
-    .dish-price {
-        align-self: flex-start;
+@media (max-width: 480px) {
+    .dish-image {
+        height: 180px;
+        border-radius: 8px;
+    }
+
+    .menu-item {
+        gap: 0.5rem;
+        padding: 0.5rem;
     }
 }
