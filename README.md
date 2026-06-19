@@ -25,7 +25,7 @@ pip install -r requirements.txt
 
 ### 2. Створи файл .env
 
-Скопіюй `.env.example` в `.env` і заповни (для локальної розробки можна залишити як є).
+`.env` і заповни (для локальної розробки можна залишити як є).
 
 ### 3. Виконай міграції
 
@@ -33,7 +33,7 @@ pip install -r requirements.txt
 python manage.py migrate
 ```
 
-### 4. Заповни демо-даними (страви, категорії)
+### 4. Заповни даними (страви, категорії)
 
 ```bash
 python manage.py seed_menu
@@ -57,45 +57,6 @@ python manage.py runserver
 
 ---
 
-## 🌐 Деплой на Railway
-
-### 1. Залий проєкт на GitHub
-
-```bash
-git init
-git add .
-git commit -m "Initial commit"
-git remote add origin https://github.com/твій-нік/restaurant-demo.git
-git push -u origin main
-```
-
-### 2. На Railway
-
-1. Зареєструйся на [railway.app](https://railway.app)
-2. **New Project → Deploy from GitHub repo** → обери свій репозиторій
-3. **+ New → Database → PostgreSQL** (Railway автоматично підставить `DATABASE_URL`)
-4. У вкладці **Variables** додай:
-   ```
-   SECRET_KEY=довгий-випадковий-рядок-тут
-   DEBUG=False
-   ```
-5. Railway автоматично визначить Procfile і задеплоїть проєкт
-
-### 3. Після деплою виконай міграції та seed
-
-У вкладці сервісу → **Settings → Deploy → відкрий термінал** (або через Railway CLI):
-
-```bash
-railway run python manage.py migrate
-railway run python manage.py seed_menu
-railway run python manage.py createsuperuser
-```
-
-### 4. Готово
-
-Railway видасть домен типу `your-app.up.railway.app` — це і є твоє демо для портфоліо.
-
----
 
 ## 📁 Як редагувати меню (для клієнта)
 
