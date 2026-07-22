@@ -24,7 +24,7 @@
                                     <p class="text-muted small mb-0">{{ dish.description }}</p>
                                 {% endif %}
                             {% if dish.image %}
-                                    <img src="{{ dish.image.url }}" class="dish-image">
+                                    <img src="{{ dish.get_image_url }}" class="dish-image">
                                 {% endif %}
                             </div>
                             <span class="dish-price ms-3">{{ dish.price }} грн</span>

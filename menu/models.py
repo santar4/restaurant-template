@@ -1,5 +1,5 @@
 from django.db import models
-
+from menu.storage import DishImageStorage
 
 class Category(models.Model):
     """Категорія меню: Перші страви, Основні страви, Десерти, Напої"""
@@ -16,7 +16,6 @@ class Category(models.Model):
 
 
 class Dish(models.Model):
-    """Страва в меню"""
     category = models.ForeignKey(
         Category, on_delete=models.CASCADE,
         related_name='dishes', verbose_name='Категорія'
@@ -38,6 +37,15 @@ class Dish(models.Model):
 
     def __str__(self):
         return self.name
+
+    def get_image_url(self):
+        if not self.image:
+            return None
+
+        url = self.image.url
+        import re
+        cleaned_url = re.sub(r'_[a-z0-9]{6}(\.[a-z]+)$', r'\1', url)
+        return cleaned_url
 
 
 class Booking(models.Model):

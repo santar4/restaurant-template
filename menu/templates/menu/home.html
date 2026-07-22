@@ -32,7 +32,7 @@
             <div class="col-md-4">
                 <div class="dish-card">
                     {% if dish.image %}
-                        <img src="{{ dish.image.url }}" alt="{{ dish.name }}" class="dish-image">
+                        <img src="{{ dish.get_image_url }}" alt="{{ dish.name }}" class="dish-image">
                     {% else %}
                         <div class="placeholder-img">🍝</div>
                     {% endif %}
