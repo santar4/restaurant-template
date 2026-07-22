@@ -12,7 +12,7 @@ DEBUG = config('DEBUG', default=True, cast=bool)
 
 ALLOWED_HOSTS = os.environ.get(
     'ALLOWED_HOSTS',
-    'web-production-a56b6.up.railway.app,127.0.0.1'
+    'web-production-a56b6.up.railway.app'
 ).split(',')
 
 CSRF_TRUSTED_ORIGINS = config(
