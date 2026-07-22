@@ -12,12 +12,12 @@ DEBUG = config('DEBUG', default=True, cast=bool)
 
 ALLOWED_HOSTS = os.environ.get(
     'ALLOWED_HOSTS',
-    'web-production-a56b6.up.railway.app'
+    'web-production-a56b6.up.railway.app,localhost,127.0.0.1'
 ).split(',')
 
 CSRF_TRUSTED_ORIGINS = config(
     'CSRF_TRUSTED_ORIGINS',
-    default='https://*.up.railway.app',
+    default='https://web-production-a56b6.up.railway.app',
     cast=lambda v: [s.strip() for s in v.split(',')]
 )
 
@@ -27,10 +27,10 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
-    'django.contrib.staticfiles',
 
-    'cloudinary',
     'cloudinary_storage',
+    'django.contrib.staticfiles',
+    'cloudinary',
 
     'menu',
 ]
@@ -118,10 +118,9 @@ STORAGES = {
         "BACKEND": "cloudinary_storage.storage.MediaCloudinaryStorage",
     },
     "staticfiles": {
-        "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
+        "BACKEND": "whitenoise.storage.CompressedStaticFilesStorage",
     },
 }
-
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
